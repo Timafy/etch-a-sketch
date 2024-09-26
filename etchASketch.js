@@ -91,6 +91,7 @@ function generateGrid(gridSize) {
                 case true:
                     let color = colorChange();
                     square_div.style.backgroundColor = color;
+                    square_div.style.opacity = "1";
                     break;
                 }
             })
