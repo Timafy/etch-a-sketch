@@ -82,6 +82,10 @@ function generateGrid(gridSize) {
                         const num = 0.2;
                         square_div.style.opacity = Math.min(Number(square_div.style.opacity)+num, 1.0).toString();
                     }
+                    else {
+                        square_div.style.backgroundColor = "white";
+                        square_div.style.opacity = "0.2"; 
+                    }
 
                     break;
                 case true:
