@@ -19,15 +19,15 @@ body.appendChild(btn);
 body.style.backgroundColor = "black";
 generateGrid(16);
 
-function generateGrid(int) {
-    for (i =0; i<int; i++){
+function generateGrid(gridSize) {
+    for (let i =0; i<gridSize; i++){
         const container = document.createElement("div");
-        container.setAttribute("style", "width: 1000px; margin: 0 auto");
+        container.setAttribute("style", `max-width: 750px; max-height: ${750/ gridSize}px; display: flex; margin: 0 auto`);
         body.appendChild(container)
     
-        for (j=0; j<int; j++){
+        for (let j=0; j<gridSize; j++){
             const square_div = document.createElement("div");
-            square_div.setAttribute('style', "width: 40px; height: 40px; outline: 2px solid white; display: inline-block; margin: 0px");
+            square_div.setAttribute("style", "width: 30px; flex: 1; aspect-ratio: 1/1; outline: 0.5px solid white; margin: 0px");
             container.appendChild(square_div);
             // hover effect
             square_div.addEventListener("mouseover", ()=> {
