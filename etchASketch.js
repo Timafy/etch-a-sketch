@@ -6,9 +6,9 @@ const title_div = document.createElement("div");
 const colorBtn = document.createElement("button");
 const whiteBtn = document.createElement("button");
 
-colorBtn.setAttribute("style", "width: 90px; height: 30px; background-color: white");
+colorBtn.setAttribute("style", "font-family: monospace; width: 90px; height: 30px; background-color: white; border: 1px solid black; margin: 0px 50px;");
 colorBtn.textContent = "Color";
-whiteBtn.setAttribute("style", "width: 90px; height: 30px; background-color: white");
+whiteBtn.setAttribute("style", "font-family: monospace; width: 90px; height: 30px; background-color: white; border: 1px solid black; margin: 0px 50px;");
 whiteBtn.textContent = "White";
 
 colorBtn.addEventListener("click", ()=>{
@@ -26,7 +26,7 @@ const title = document.createElement("h1");
 title_div.appendChild(title);
 body.appendChild(title_div)
 title.textContent = "Etch-a-Sketch";
-title.setAttribute("style", "font-family: helvetica; color: white;\
+title.setAttribute("style", "font-family: monospace; color: black; font-size: 50px; margin-bottom: 15px;\
  margin-left: 15px");
 
 
@@ -38,7 +38,7 @@ button_div.appendChild(colorBtn);
 button_div.appendChild(whiteBtn);
 body.appendChild(button_div);
 
-resetBtn.setAttribute("style", "width:90px; height:30px; background-color: white");
+resetBtn.setAttribute("style", "font-family: monospace; width:90px; height:30px; background-color: white; border: 1px solid ; margin: 0px 50px;");
 resetBtn.textContent = "Reset"
 resetBtn.addEventListener("click", ()=> {
     let size = window.prompt("Enter new grid size:");
@@ -51,22 +51,31 @@ resetBtn.addEventListener("click", ()=> {
    
 })
 
+const div_container = document.createElement("div");
+body.appendChild(div_container);
+
 // creating the grid
-body.style.backgroundColor = "black";
+body.style.backgroundColor = "white";
 generateGrid(16);
 
 function generateGrid(gridSize) {
     for (let i =0; i<gridSize; i++){
         const container = document.createElement("div");
         container.setAttribute("style", `max-width: 625px; max-height: ${625/ gridSize}px;\
-         display: flex; margin: 0 auto`);
+         display: flex; margin: 0 auto; border-left: 0.5px solid black; border-right: 0.5px solid black`);
+         if (i == 0) {
+            container.style.borderTop = "0.5px solid black";
+         };
+         if (i == gridSize - 1){
+            container.style.borderBottom = "0.5px solid black";
+         };
+       
         container.setAttribute("id", "grid");
-        body.appendChild(container)
+        div_container.appendChild(container)
     
         for (let j=0; j<gridSize; j++){
             const square_div = document.createElement("div");
-            square_div.setAttribute("style", "width: 30px; flex: 1; aspect-ratio: 1/1; outline:\
-             0.05px solid white; background-color: black; margin: 0px");
+            square_div.setAttribute("style", "width: 30px; flex: 1; aspect-ratio: 1/1; background-color: white; margin: 0px");
             square_div.setAttribute("id", "grid");
             container.appendChild(square_div);
             // hover effect
@@ -74,16 +83,16 @@ function generateGrid(gridSize) {
                 // switch
                 switch (color){
                 case false:
-                    if (square_div.style.backgroundColor == "black") {
-                        square_div.style.backgroundColor = "white";
+                    if (square_div.style.backgroundColor == "white") {
+                        square_div.style.backgroundColor = "black";
                         square_div.style.opacity = "0.2"; 
                     }
-                    else if (square_div.style.backgroundColor == "white") {
+                    else if (square_div.style.backgroundColor == "black") {
                         const num = 0.2;
                         square_div.style.opacity = Math.min(Number(square_div.style.opacity)+num, 1.0).toString();
                     }
                     else {
-                        square_div.style.backgroundColor = "white";
+                        square_div.style.backgroundColor = "black";
                         square_div.style.opacity = "0.2"; 
                     }
 
