@@ -32,7 +32,7 @@ title.setAttribute("style", "font-family: monospace; color: black; font-size: 50
 
 const button_div = document.createElement("div");
 button_div.setAttribute("style", "display: flex; justify-content: center;\
- margin-bottom: 25px");
+ margin-bottom: 18px");
 button_div.appendChild(resetBtn);
 button_div.appendChild(colorBtn);
 button_div.appendChild(whiteBtn);
@@ -62,12 +62,12 @@ function generateGrid(gridSize) {
     for (let i =0; i<gridSize; i++){
         const container = document.createElement("div");
         container.setAttribute("style", `max-width: 625px; max-height: ${625/ gridSize}px;\
-         display: flex; margin: 0 auto; border-left: 0.5px solid black; border-right: 0.5px solid black`);
+         display: flex; margin: 0 auto; border-left: 1px solid black; border-right: 1px solid black`);
          if (i == 0) {
-            container.style.borderTop = "0.5px solid black";
+            container.style.borderTop = "1px solid black";
          };
          if (i == gridSize - 1){
-            container.style.borderBottom = "0.5px solid black";
+            container.style.borderBottom = "1px solid black";
          };
        
         container.setAttribute("id", "grid");
